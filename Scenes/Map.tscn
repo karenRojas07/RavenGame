@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ruhvlnxfcsu7"]
+
+[ext_resource type="Texture2D" uid="uid://k3d6nbfxpjea" path="res://Textures/Map1.png" id="1_645b1"]
+[ext_resource type="Texture2D" uid="uid://bh5qm1kdbha1p" path="res://Textures/tierra.png" id="1_oufn8"]
+[ext_resource type="PackedScene" uid="uid://cbgjtr70maqer" path="res://Scenes/Player.tscn" id="2_77rtk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ec5n"]
+texture = ExtResource("1_oufn8")
+texture_region_size = Vector2i(35, 38)
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.2028, -19, 15.75, -19, 15.25, 13, -13.75, 13.5)
+
+[sub_resource type="TileSet" id="TileSet_n3smt"]
+tile_size = Vector2i(35, 38)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_7ec5n")
+
+[node name="Nivel1" type="Node2D"]
+
+[node name="Map1" type="Sprite2D" parent="."]
+position = Vector2(-6.25, -12)
+scale = Vector2(2.26078, 2.25)
+texture = ExtResource("1_645b1")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(19, 0)
+tile_set = SubResource("TileSet_n3smt")
+format = 2
+layer_0/tile_data = PackedInt32Array(131065, 196608, 3, 131066, 196608, 3, 131067, 196608, 3, 196600, 196608, 3, 196601, 196608, 3, 196602, 196608, 3, 196603, 196608, 3, 196604, 196608, 3, 131068, 196608, 3, 131069, 196608, 3, 196605, 196608, 3, 196606, 196608, 3, 131070, 196608, 3, 196607, 196608, 3, 131072, 196608, 3, 65536, 196608, 3, 0, 196608, 3, 1, 196608, 3, 65537, 196608, 3, 131073, 196608, 3, 131074, 196608, 3, 196610, 196608, 3, 196609, 196608, 3, 196608, 196608, 3, 262143, 196608, 3, 262142, 196608, 3, 262141, 196608, 3, 262140, 196608, 3, 262139, 196608, 3, 262138, 196608, 3, 262137, 196608, 3, 262136, 196608, 3, 262135, 196608, 3, 196611, 196608, 3, 131075, 196608, 3, 65539, 196608, 3, 131076, 196608, 3, 196612, 196608, 3, 196613, 196608, 3, 131077, 196608, 3, 131078, 196608, 3, 196614, 196608, 3, 196615, 196608, 3, 131079, 196608, 3, 65542, 196608, 3, 65541, 196608, 3)
+
+[node name="Player" parent="." instance=ExtResource("2_77rtk")]
+position = Vector2(-138, 15)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5, -12)
+zoom = Vector2(2, 2)
