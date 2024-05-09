@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ruhvlnxfcsu7"]
+[gd_scene load_steps=14 format=3 uid="uid://ruhvlnxfcsu7"]
 
 [ext_resource type="Texture2D" uid="uid://k3d6nbfxpjea" path="res://Textures/Map1.png" id="1_645b1"]
 [ext_resource type="Texture2D" uid="uid://bh5qm1kdbha1p" path="res://Textures/tierra.png" id="1_oufn8"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bemll87cavdlg" path="res://Textures/Tiles.jpg" id="3_7ip6x"]
 [ext_resource type="Texture2D" uid="uid://bikfamf1ma311" path="res://Textures/prueba.png" id="4_eb2uk"]
 [ext_resource type="Texture2D" uid="uid://dcgis3t7kvciq" path="res://Textures/Tree.png" id="5_3sgwf"]
+[ext_resource type="PackedScene" uid="uid://dbm154l7m3uqm" path="res://Scenes/Enemy.tscn" id="7_molfr"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="8_6xmrs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ec5n"]
 texture = ExtResource("1_oufn8")
@@ -510,8 +512,12 @@ format = 2
 layer_0/tile_data = PackedInt32Array(262140, 2, 0, 262139, 2, 0, 262138, 2, 0, 262137, 2, 0, 262136, 2, 0, 262135, 2, 0, 262133, 2, 0, 262134, 2, 0, 327670, 2, 0, 327669, 2, 0, 327668, 2, 0, 327671, 2, 0, 327672, 2, 0, 327673, 2, 0, 327674, 2, 0, 327675, 2, 0, 327676, 2, 0, 393204, 2, 1, 393205, 2, 1, 393206, 2, 1, 393207, 2, 1, 393203, 2, 1, 327667, 2, 1, 262131, 2, 1, 262132, 2, 1, 196597, 2, 1, 196598, 2, 1, 196599, 2, 1, 196600, 2, 1, 131064, 2, 1, 131065, 2, 1, 196601, 2, 1, 196602, 2, 1, 196603, 2, 1, 196604, 2, 1, 196605, 2, 1, 262141, 2, 1, 262142, 2, 1, 327678, 2, 1, 327677, 2, 1, 393213, 2, 1, 393212, 2, 1, 393211, 2, 1, 393210, 2, 1, 393209, 2, 1, 393208, 2, 1, 393214, 2, 1, 393215, 2, 1, 327679, 2, 1, 262143, 2, 1, 196608, 2, 1, 131072, 2, 1, 131073, 2, 1, 196609, 2, 1, 262145, 2, 1, 262146, 2, 1, 327682, 2, 1, 327681, 2, 1, 327680, 2, 1, 262144, 2, 1, 393202, 2, 1, 393201, 2, 1, 393200, 2, 1, 393199, 2, 1, 393198, 2, 1, 393197, 2, 1, 393196, 2, 1, 327660, 2, 1, 327661, 2, 1, 327662, 2, 1, 327663, 2, 1, 327664, 2, 1, 327665, 2, 1, 327666, 2, 1, 262130, 2, 1, 262125, 2, 1, 196589, 2, 1, 196588, 2, 1, 262124, 2, 1, 327683, 2, 1, 327684, 2, 1, 327685, 2, 1, 327686, 2, 1, 262150, 2, 1, 196614, 2, 1, 196615, 2, 1, 262151, 2, 1, 327687, 2, 1, 327688, 2, 0, 327689, 2, 0, 327690, 2, 0, 327691, 2, 0, 327692, 2, 1, 327693, 2, 1, 327694, 2, 1, 262158, 2, 1, 196622, 2, 1, 131086, 2, 1, 131087, 2, 1, 196623, 2, 1, 262159, 2, 1, 327695, 2, 1, 327696, 2, 1, 262160, 2, 1, 196624, 2, 1, 131088, 2, 1, 131080, 3, 1, 196616, 3, 2, 262152, 2, 0, 131081, 65539, 1, 196617, 65539, 2, 262153, 2, 0, 131082, 131075, 1, 196618, 131075, 2, 262154, 2, 0, 131083, 196611, 1, 196619, 196611, 2, 262155, 2, 0, 65544, 3, 0, 65545, 65539, 0, 65546, 131075, 0, 65547, 196611, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_77rtk")]
-position = Vector2(-242, 49)
+position = Vector2(-275, 12)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(235, -30)
 zoom = Vector2(2, 2)
+
+[node name="Enemy" parent="." instance=ExtResource("7_molfr")]
+position = Vector2(-39, 18)
+script = ExtResource("8_6xmrs")
