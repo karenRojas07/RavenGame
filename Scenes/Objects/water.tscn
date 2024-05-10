@@ -1,0 +1,117 @@
+[gd_scene load_steps=23 format=3 uid="uid://dw72qlinlkhjn"]
+
+[ext_resource type="Texture2D" uid="uid://blr8h88hl5y5k" path="res://Textures/Water/Map1/waterAnimation59.png" id="1_p46mi"]
+[ext_resource type="Texture2D" uid="uid://bwonmidbpy2se" path="res://Textures/Water/Map1/waterAnimation1.png" id="2_idjlw"]
+[ext_resource type="Texture2D" uid="uid://c2oir6v1fwj6k" path="res://Textures/Water/Map1/waterAnimation11.png" id="3_1e83g"]
+[ext_resource type="Texture2D" uid="uid://0tyb0dgnjd1m" path="res://Textures/Water/Map1/waterAnimation13.png" id="4_y82um"]
+[ext_resource type="Texture2D" uid="uid://68njos0aoim3" path="res://Textures/Water/Map1/waterAnimation31.png" id="5_1ipu0"]
+[ext_resource type="Texture2D" uid="uid://dvqw0t2xsrw1r" path="res://Textures/Water/Map1/waterAnimation39.png" id="6_b2qas"]
+[ext_resource type="Texture2D" uid="uid://dd0nsym64cw3j" path="res://Textures/Water/Map1/waterAnimation40.png" id="7_c1vf6"]
+[ext_resource type="Texture2D" uid="uid://du54t0g1fomhr" path="res://Textures/Water/Map1/waterAnimation42.png" id="8_jtrh4"]
+[ext_resource type="Texture2D" uid="uid://cxsxcn7af5peq" path="res://Textures/Water/Map1/waterAnimation43.png" id="9_xmvt3"]
+[ext_resource type="Texture2D" uid="uid://dp6djkpldu076" path="res://Textures/Water/Map1/waterAnimation44.png" id="10_fvubd"]
+[ext_resource type="Texture2D" uid="uid://dhcltqup80t31" path="res://Textures/Water/Map1/waterAnimation46.png" id="11_q5teb"]
+[ext_resource type="Texture2D" uid="uid://d270asbpvv2xv" path="res://Textures/Water/Map1/waterAnimation47.png" id="12_v2mr0"]
+[ext_resource type="Texture2D" uid="uid://m575v053b0y0" path="res://Textures/Water/Map1/waterAnimation48.png" id="13_om8v1"]
+[ext_resource type="Texture2D" uid="uid://bif2cbf4hbwx6" path="res://Textures/Water/Map1/waterAnimation50.png" id="14_v3kue"]
+[ext_resource type="Texture2D" uid="uid://clawirv5nl5aa" path="res://Textures/Water/Map1/waterAnimation51.png" id="15_qfkaa"]
+[ext_resource type="Texture2D" uid="uid://be6tvv81fvop1" path="res://Textures/Water/Map1/waterAnimation52.png" id="16_g005i"]
+[ext_resource type="Texture2D" uid="uid://cwgm0ol7g6e7b" path="res://Textures/Water/Map1/waterAnimation53.png" id="17_p0h7q"]
+[ext_resource type="Texture2D" uid="uid://bnr26kbwy0a7c" path="res://Textures/Water/Map1/waterAnimation57.png" id="18_ieeij"]
+[ext_resource type="Texture2D" uid="uid://cs5j5ip7ipajs" path="res://Textures/Water/Map1/waterAnimation63.png" id="19_jc0ag"]
+
+[sub_resource type="GDScript" id="GDScript_76mua"]
+script/source = "extends Node2D
+
+func _ready():
+	$AnimationWater.play(\"water\")
+	$AnimationWater2.play(\"water\")
+	$AnimationWater3.play(\"water\")
+	$AnimationWater4.play(\"water\")
+	$AnimationWater5.play(\"water\")
+"
+
+[sub_resource type="Animation" id="Animation_vlf8l"]
+resource_name = "water"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.4, 5, 5.5, 6.1, 6.6, 7.1, 7.5, 8.1, 8.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_idjlw"), ExtResource("3_1e83g"), ExtResource("4_y82um"), ExtResource("5_1ipu0"), ExtResource("6_b2qas"), ExtResource("7_c1vf6"), ExtResource("8_jtrh4"), ExtResource("9_xmvt3"), ExtResource("10_fvubd"), ExtResource("11_q5teb"), ExtResource("12_v2mr0"), ExtResource("13_om8v1"), ExtResource("14_v3kue"), ExtResource("15_qfkaa"), ExtResource("16_g005i"), ExtResource("17_p0h7q"), ExtResource("18_ieeij"), ExtResource("1_p46mi"), ExtResource("19_jc0ag")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dubfq"]
+_data = {
+"water": SubResource("Animation_vlf8l")
+}
+
+[node name="Water" type="Node2D"]
+script = SubResource("GDScript_76mua")
+
+[node name="Water2" type="Sprite2D" parent="."]
+position = Vector2(-15.25, 94)
+scale = Vector2(0.6325, 0.380769)
+texture = ExtResource("17_p0h7q")
+
+[node name="AnimationWater2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Water2")
+libraries = {
+"": SubResource("AnimationLibrary_dubfq")
+}
+
+[node name="Water" type="Sprite2D" parent="."]
+position = Vector2(605, 94)
+scale = Vector2(0.6325, 0.380769)
+texture = ExtResource("6_b2qas")
+
+[node name="AnimationWater" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Water")
+libraries = {
+"": SubResource("AnimationLibrary_dubfq")
+}
+
+[node name="Water3" type="Sprite2D" parent="."]
+position = Vector2(1232, 93)
+scale = Vector2(0.6325, 0.380769)
+texture = ExtResource("17_p0h7q")
+
+[node name="AnimationWater3" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Water")
+libraries = {
+"": SubResource("AnimationLibrary_dubfq")
+}
+
+[node name="Water4" type="Sprite2D" parent="."]
+position = Vector2(1847, 93)
+scale = Vector2(0.6325, 0.380769)
+texture = ExtResource("17_p0h7q")
+
+[node name="AnimationWater4" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Water")
+libraries = {
+"": SubResource("AnimationLibrary_dubfq")
+}
+
+[node name="Water5" type="Sprite2D" parent="."]
+position = Vector2(2473, 93)
+scale = Vector2(0.6325, 0.380769)
+texture = ExtResource("17_p0h7q")
+
+[node name="AnimationWater5" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Water")
+libraries = {
+"": SubResource("AnimationLibrary_dubfq")
+}
+
+[node name="Water6" type="Sprite2D" parent="."]
+position = Vector2(3099, 92)
+scale = Vector2(0.6325, 0.380769)
+texture = ExtResource("17_p0h7q")

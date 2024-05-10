@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://jm7rjx85tmr4"]
+
+[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="1_ct1oo"]
+[ext_resource type="Texture2D" uid="uid://br2pxmxx165vv" path="res://Textures/Objects/Cartel/Cartel 1.png" id="2_qt8bm"]
+[ext_resource type="Texture2D" uid="uid://btumgl06kvsc8" path="res://Textures/Objects/Cartel/Cartel 2.png" id="3_52v6b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3mkt"]
+size = Vector2(32, 46)
+
+[sub_resource type="Animation" id="Animation_t16sp"]
+resource_name = "Cartel"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_52v6b")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_865x4"]
+_data = {
+"Cartel": SubResource("Animation_t16sp")
+}
+
+[node name="checkpoint" type="Node2D"]
+script = ExtResource("1_ct1oo")
+spawnpoint = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qt8bm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_g3mkt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_865x4")
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

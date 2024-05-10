@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const moveSpeed = 70
 const maxSpeed = 100
 const jumpHeight = -300
@@ -8,6 +10,8 @@ const gravity = 15
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 
+func _ready():
+	GameManager.player = self
 
 func _physics_process(_delta):
 	velocity.y += gravity
@@ -37,3 +41,9 @@ func _physics_process(_delta):
 			velocity.x = lerp(velocity.x, 0.0, 0.01)
 
 	move_and_slide()
+	
+	if position.y >= 180:
+		die()
+
+func die():
+	GameManager.respawn_player()
