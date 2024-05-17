@@ -10,8 +10,15 @@ const gravity = 15
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 
+@export var attacking = false
+
 func _ready():
 	GameManager.player = self
+
+func _process(delta):
+	if Input.is_action_just_pressed("attack"):
+		attack()
+		
 
 func _physics_process(_delta):
 	velocity.y += gravity
@@ -42,8 +49,20 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	
-	if position.y >= 180:
+	if position.y >= 160:
 		die()
+
+func attack():
+	var overlapping_objects = $AttackArea.get_overlapping_areas()
+	
+	for area in overlapping_objects:
+		if area.get_parent().is_in_group("Enemies"):
+			area.get_parent().die()
+		if area.get_parent() is Chest:
+			area.get_parent().open()
+	
+	attacking = true
+	$AnimationHacha.play("Attack")
 
 func die():
 	GameManager.respawn_player()

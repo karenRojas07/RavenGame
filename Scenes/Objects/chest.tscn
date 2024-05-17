@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8u5g2syv2j34"]
+
+[ext_resource type="Texture2D" uid="uid://buxi30rw2eb0c" path="res://Textures/Objects/Chest/Chest1.png" id="1_mhw5c"]
+[ext_resource type="Script" path="res://Scripts/Objects/chest.gd" id="1_v7w7x"]
+[ext_resource type="Texture2D" uid="uid://bfqyminmmhi2r" path="res://Textures/Objects/Chest/Chest2.png" id="2_pe3k3"]
+[ext_resource type="Texture2D" uid="uid://cdc65km5nrqmp" path="res://Textures/Objects/Chest/Chest3.png" id="3_237s5"]
+[ext_resource type="Texture2D" uid="uid://bpdedh737ta4p" path="res://Textures/Objects/Chest/Chest4.png" id="4_jio4c"]
+[ext_resource type="Texture2D" uid="uid://ditin6tfjvpyt" path="res://Textures/Objects/Chest/Chest5.png" id="5_vhadx"]
+[ext_resource type="Texture2D" uid="uid://dk7rdhrmi2qvh" path="res://Textures/Objects/Chest/Chest6.png" id="6_6beu1"]
+[ext_resource type="Texture2D" uid="uid://ed258s78kq1k" path="res://Textures/Objects/Chest/Chest7.png" id="7_g72cw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8qxa"]
+size = Vector2(24, 19)
+
+[sub_resource type="Animation" id="Animation_ou2cp"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_mhw5c"), ExtResource("2_pe3k3"), ExtResource("3_237s5"), ExtResource("4_jio4c"), ExtResource("5_vhadx"), ExtResource("6_6beu1"), ExtResource("7_g72cw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kk78g"]
+_data = {
+"open": SubResource("Animation_ou2cp")
+}
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_v7w7x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, -4.75)
+scale = Vector2(0.705882, 0.672414)
+texture = ExtResource("1_mhw5c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5, -4.5)
+shape = SubResource("RectangleShape2D_x8qxa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kk78g")
+}

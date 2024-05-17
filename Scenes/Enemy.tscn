@@ -1,12 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbm154l7m3uqm"]
+[gd_scene load_steps=14 format=3 uid="uid://dbm154l7m3uqm"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fnx1l"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_d3qid"]
 [ext_resource type="Texture2D" uid="uid://g5vxdg4uvq8u" path="res://Textures/TEXTURAS/ENEMIGOS/FANTASMA/pixil-frame-0.png" id="2_op3wa"]
+[ext_resource type="Texture2D" uid="uid://bkt1p18qsygsc" path="res://Textures/TEXTURAS/ENEMIGOS/FANTASMA/pixil-frame-2.png" id="2_pkuxq"]
+[ext_resource type="Texture2D" uid="uid://bq8qvtbv4juyr" path="res://Textures/TEXTURAS/ENEMIGOS/FANTASMA/pixil-frame-1.png" id="4_txnc2"]
+[ext_resource type="Texture2D" uid="uid://clqi2p7enm1p5" path="res://Textures/TEXTURAS/ENEMIGOS/FANTASMA/pixil-frame-3.png" id="5_rji2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x43ju"]
+size = Vector2(20, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mbd5"]
+size = Vector2(20, 27)
 
 [sub_resource type="Animation" id="Animation_0msoo"]
 resource_name = "IDLE"
 length = 0.5
 loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_op3wa"), ExtResource("4_txnc2"), ExtResource("2_pkuxq"), ExtResource("5_rji2c")]
+}
 
 [sub_resource type="Animation" id="Animation_nex07"]
 resource_name = "Idle"
@@ -32,16 +53,9 @@ _data = {
 "Walk": SubResource("Animation_6t8jb")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x43ju"]
-size = Vector2(20, 24)
-
-[node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_fnx1l")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_rgd05")
-}
+[node name="Ghost" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 2
+script = ExtResource("1_d3qid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -50,3 +64,20 @@ shape = SubResource("RectangleShape2D_x43ju")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -4)
 texture = ExtResource("2_op3wa")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_6mbd5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-11, 1)
+target_position = Vector2(0, 13)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rgd05")
+}
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

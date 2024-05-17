@@ -35,6 +35,7 @@ spawnpoint = null
 texture = ExtResource("2_qt8bm")
 
 [node name="Area2D" type="Area2D" parent="."]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_g3mkt")
