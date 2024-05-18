@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://cbgjtr70maqer"]
+[gd_scene load_steps=21 format=3 uid="uid://cbgjtr70maqer"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_d7ydn"]
 [ext_resource type="Texture2D" uid="uid://b87d5wass3vxi" path="res://Textures/Character/character.png" id="1_o8b7n"]
 [ext_resource type="Texture2D" uid="uid://cut3ilgx07tpy" path="res://Textures/Character/character2.png" id="3_dt3ib"]
-[ext_resource type="Texture2D" uid="uid://cjcngvuw2v1ax" path="res://Textures/TEXTURAS/ARMAS/Hacha.png" id="4_e20ja"]
+[ext_resource type="Texture2D" uid="uid://d11jtxq8bkl1k" path="res://Textures/Character/die.png" id="4_solvy"]
 [ext_resource type="Texture2D" uid="uid://b4lhrengmxtb7" path="res://Textures/TEXTURAS/ARMAS/Hacha/Hacha1.png" id="4_u5bcc"]
 [ext_resource type="Texture2D" uid="uid://cxoyvorbripmn" path="res://Textures/TEXTURAS/ARMAS/Hacha/Hacha2.png" id="5_evflq"]
 [ext_resource type="Texture2D" uid="uid://dyf85d5dtnq6a" path="res://Textures/TEXTURAS/ARMAS/Hacha/Hacha3.png" id="6_88lhl"]
@@ -80,13 +80,30 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_wqv7a"]
+resource_name = "die"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_dt3ib"), ExtResource("4_solvy"), ExtResource("1_o8b7n")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgd05"]
 _data = {
 "IDLE": SubResource("Animation_0msoo"),
 "Idle": SubResource("Animation_nex07"),
 "RESET": SubResource("Animation_cnfpw"),
 "WALK": SubResource("Animation_pbien"),
-"Walk": SubResource("Animation_6t8jb")
+"Walk": SubResource("Animation_6t8jb"),
+"die": SubResource("Animation_wqv7a")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x43ju"]
@@ -133,6 +150,7 @@ collision_layer = 2
 script = ExtResource("1_d7ydn")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-6.5, -7)
@@ -157,9 +175,10 @@ shape = SubResource("RectangleShape2D_x43ju")
 z_index = -2
 position = Vector2(12, -14)
 scale = Vector2(0.789063, 0.796875)
-texture = ExtResource("4_e20ja")
+texture = ExtResource("4_u5bcc")
 
 [node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(13.75, -8.5)

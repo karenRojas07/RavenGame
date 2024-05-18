@@ -7,6 +7,8 @@ var speed = -60.0
 var gravity = 15
 var facing_right = false
 
+var dead = false
+
 func _ready():
 	$AnimationPlayer.play("IDLE")
 
@@ -31,9 +33,12 @@ func flip():
 
 
 func _on_hitbox_area_entered(area):
-	if area.get_parent() is Player:
-		#area.get_parent().die()
-		print("xd")
+	if area.get_parent() is Player && !dead:
+		area.get_parent().take_damage(1)
+		
 
 func die():
-	queue_free()
+	dead = true
+	speed = 0
+	$AnimationPlayer.play("die")
+	

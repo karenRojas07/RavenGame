@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq6ao88srapa"]
+
+[ext_resource type="Texture2D" uid="uid://cobivrdm4024u" path="res://Textures/Objects/Potion/2.png" id="1_sg7y1"]
+
+[sub_resource type="GDScript" id="GDScript_vgf44"]
+script/source = "extends CharacterBody2D
+
+@export var speed: float = 2.0
+@export var change_interval: float = 2.0
+
+# Variables internas
+var direction: Vector2 = Vector2.ZERO
+var time_until_change: float = 0.0
+
+func _ready():
+	randomize()  # Inicializa el generador de números aleatorios
+	set_random_direction()
+
+func _physics_process(delta: float) -> void:
+	time_until_change -= delta
+	if time_until_change <= 0:
+		set_random_direction()
+	
+	# Mueve el objeto en la dirección actual con la velocidad especificada
+	velocity = direction * speed
+	move_and_slide()
+
+func set_random_direction():
+	var angle = randf() * TAU  # TAU es equivalente a 2 * PI
+	direction = Vector2(cos(angle), sin(angle)).normalized()
+	time_until_change = change_interval
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1r5t"]
+radius = 7.0
+height = 20.0
+
+[node name="Potion" type="Node2D"]
+script = SubResource("GDScript_vgf44")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.250002, -6.5)
+scale = Vector2(0.635417, 0.520833)
+texture = ExtResource("1_sg7y1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_f1r5t")

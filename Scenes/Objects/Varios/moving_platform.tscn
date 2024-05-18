@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlwmm3bk5dcud"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Varios/moving_platform.gd" id="1_hh2ou"]
+[ext_resource type="Texture2D" uid="uid://cbspx4bu32h4c" path="res://Textures/Objects/Varios/platform.png" id="1_wjfuj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gltu4"]
+size = Vector2(69, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kila0"]
+size = Vector2(69, 18)
+
+[sub_resource type="Animation" id="Animation_ojovi"]
+resource_name = "Move"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(128, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eq10l"]
+_data = {
+"Move": SubResource("Animation_ojovi")
+}
+
+[node name="MovingPlatform" type="Node2D"]
+script = ExtResource("1_hh2ou")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(10, 2.5)
+scale = Vector2(1.41667, 1.3125)
+texture = ExtResource("1_wjfuj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(9.5, 4)
+shape = SubResource("RectangleShape2D_gltu4")
+
+[node name="Area2D" type="Area2D" parent="AnimatableBody2D"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Area2D"]
+position = Vector2(9.5, -2)
+shape = SubResource("RectangleShape2D_kila0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_eq10l")
+}
+
+[connection signal="area_entered" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_area_exited"]
