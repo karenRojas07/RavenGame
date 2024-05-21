@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8u5g2syv2j34"]
+[gd_scene load_steps=13 format=3 uid="uid://b8u5g2syv2j34"]
 
 [ext_resource type="Texture2D" uid="uid://buxi30rw2eb0c" path="res://Textures/Objects/Chest/Chest1.png" id="1_mhw5c"]
 [ext_resource type="Script" path="res://Scripts/Objects/chest.gd" id="1_v7w7x"]
+[ext_resource type="PackedScene" uid="uid://dcmvuy7pinlq2" path="res://Scenes/Objects/Varios/key.tscn" id="2_hrqsa"]
 [ext_resource type="Texture2D" uid="uid://bfqyminmmhi2r" path="res://Textures/Objects/Chest/Chest2.png" id="2_pe3k3"]
 [ext_resource type="Texture2D" uid="uid://cdc65km5nrqmp" path="res://Textures/Objects/Chest/Chest3.png" id="3_237s5"]
 [ext_resource type="Texture2D" uid="uid://bpdedh737ta4p" path="res://Textures/Objects/Chest/Chest4.png" id="4_jio4c"]
@@ -34,6 +35,7 @@ _data = {
 
 [node name="Chest" type="Node2D"]
 script = ExtResource("1_v7w7x")
+key_scene = ExtResource("2_hrqsa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-5, -4.75)

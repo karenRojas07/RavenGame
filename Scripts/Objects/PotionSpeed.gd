@@ -4,6 +4,12 @@ extends CharacterBody2D
 @export var change_interval: float = 2.0
 @export var slowdown_factor: float = 0.5
 
+@export var speed_increase_probs: Dictionary = {
+	"low": 0.5,  # 50% de probabilidad de aumentar la velocidad en 10
+	"medium": 0.3,  # 30% de probabilidad de aumentar la velocidad en 20 
+	"high": 0.2  # 20% de probabilidad de aumentar la velocidad en 30
+}
+
 # Variables internas
 var direction: Vector2 = Vector2.ZERO
 var time_until_change: float = 0.0
@@ -21,8 +27,8 @@ func _physics_process(delta: float) -> void:
 	# Calcula la nueva posición potencial
 	var new_position = global_position + (direction * speed * slowdown_factor * delta)
 	
-	# Verifica si la nueva posición está dentro del límite de 100 píxeles desde la posición inicial
-	if new_position.distance_to(initial_position) <= 100.0:
+	# Verifica si la nueva posición está dentro del límite de 50 píxeles desde la posición inicial
+	if new_position.distance_to(initial_position) <= 50.0:
 		# Mueve el objeto en la dirección actual con la velocidad especificada
 		velocity = direction * speed * slowdown_factor
 	else:
@@ -40,13 +46,15 @@ func set_random_direction():
 func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:
 		var random_number = randf()
-		var lives = 0
-		if random_number < 0.6:
-			lives = 1
-		elif random_number < 0.9:  # Si el número es mayor a 0.6 pero menor a 0.9, imprime 2
-			lives = 2
-		else:  # Si el número es mayor a 0.9, imprime 3
-			lives = 3
-		area.get_parent().add_health(lives)
-		
+		var speed = 0
+		if random_number < speed_increase_probs["low"]:
+			print("Aumenta la velocidad en 10")
+			speed = 10.0
+		elif random_number < speed_increase_probs["low"] + speed_increase_probs["medium"]:
+			print("Aumenta la velocidad en 20")
+			speed = 20.0
+		else:
+			print("Aumenta la velocidad en 30")
+			speed = 30.0
+		area.get_parent().increase_speed(speed)
 		queue_free()

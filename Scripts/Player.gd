@@ -7,6 +7,7 @@ const maxSpeed = 100
 const jumpHeight = -300
 const gravity = 15
 const initial_lives = 2
+const speedIncreaseDuration = 15.0
 
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
@@ -17,6 +18,9 @@ var max_health = 2
 var health = 0
 var can_take_damage = true
 var receiving_damage = false
+var current_speed = maxSpeed
+var current_jump = jumpHeight
+static var llave_recogida: bool = false
 
 signal health_changed(current_health, max_health)
 
@@ -38,12 +42,12 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("ui_right"):
 		sprite.flip_h = false
 		animationPlayer.play("WALK")
-		velocity.x = min(velocity.x + moveSpeed, maxSpeed)
+		velocity.x = min(velocity.x + moveSpeed, current_speed)
 
 	elif Input.is_action_pressed("ui_left"):
 		sprite.flip_h = true
 		animationPlayer.play("WALK")
-		velocity.x = max(velocity.x - moveSpeed, -maxSpeed)
+		velocity.x = max(velocity.x - moveSpeed, -current_speed)
 	
 	elif !receiving_damage:
 		animationPlayer.play("IDLE")
@@ -53,7 +57,7 @@ func _physics_process(_delta):
 
 	if is_on_floor():
 		if Input.is_action_pressed("ui_up"):
-			velocity.y = jumpHeight
+			velocity.y = current_jump
 		if friction:
 			velocity.x = lerp(velocity.x, 0.0, 0.5)
 	else:
@@ -106,3 +110,21 @@ func die():
 	max_health = initial_lives
 	health = max_health
 	emit_signal("health_changed", health, max_health)
+	
+func increase_speed(amount: float) -> void:
+	current_speed += amount
+	await get_tree().create_timer(speedIncreaseDuration).timeout
+	current_speed -= amount
+	
+func increase_jump(amount: float) -> void:
+	current_jump -= amount
+	await get_tree().create_timer(speedIncreaseDuration).timeout
+	current_jump += amount
+
+func collect_key():
+	print("Se recogió la llave")
+	llave_recogida = true
+	
+func delete_key():
+	llave_recogida = false
+
