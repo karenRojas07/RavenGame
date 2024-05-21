@@ -88,6 +88,7 @@ _data = {
 }
 
 [node name="Ghost" type="CharacterBody2D" groups=["Enemies"]]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_d3qid")
 
@@ -97,7 +98,7 @@ shape = SubResource("RectangleShape2D_x43ju")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -4)
-texture = ExtResource("2_o7cf7")
+texture = ExtResource("2_op3wa")
 
 [node name="Hitbox" type="Area2D" parent="."]
 

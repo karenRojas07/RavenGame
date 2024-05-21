@@ -13,7 +13,6 @@ config_version=5
 config/name="RavenHistory"
 run/main_scene="res://Scenes/Map.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 

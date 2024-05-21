@@ -11,6 +11,7 @@ height = 18.0
 size = Vector2(12.5, 17.5)
 
 [node name="Potion" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_rx1b3")
 
 [node name="Area2D" type="Area2D" parent="."]
