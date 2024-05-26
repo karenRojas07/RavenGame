@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://c7o72m2t6fxrd" path="res://Textures/Objects/Varios/Deco/Virgen.png" id="38_n1pdk"]
 [ext_resource type="PackedScene" uid="uid://d0mpwuentqpto" path="res://Scenes/Objects/PotionSpeed.tscn" id="39_dq87q"]
 [ext_resource type="PackedScene" uid="uid://dy2v2gwp7sjk1" path="res://Scenes/Objects/PotionJump.tscn" id="40_fsmoq"]
-[ext_resource type="PackedScene" uid="uid://bhgaqusdxuy12" path="res://Scenes/Objects/Varios/door.tscn" id="41_l32io"]
+[ext_resource type="PackedScene" uid="uid://cubdayauqtiea" path="res://Scenes/Objects/Varios/door 2.tscn" id="42_mmvuc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ec5n"]
 texture = ExtResource("2_ps1jl")
@@ -11992,7 +11992,7 @@ layer_0/tile_data = PackedInt32Array(131072, 2, 1, 131073, 2, 1, -262166, 196608
 
 [node name="Player" parent="." instance=ExtResource("7_65ixj")]
 z_index = 20
-position = Vector2(2759, -87)
+position = Vector2(-315, -144)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(235, -30)
@@ -12109,7 +12109,7 @@ position = Vector2(1989, 38)
 position = Vector2(2079, -156)
 
 [node name="Chest2" parent="." instance=ExtResource("20_4tr00")]
-position = Vector2(1929, -279)
+position = Vector2(1928, -277)
 
 [node name="Jumper4" parent="." instance=ExtResource("11_vw4yw")]
 position = Vector2(2105, 11)
@@ -12299,10 +12299,6 @@ position = Vector2(1852, 86)
 [node name="Potion8" parent="." instance=ExtResource("40_fsmoq")]
 position = Vector2(2893, 114)
 
-[node name="Door" parent="." instance=ExtResource("41_l32io")]
-z_index = -2
-position = Vector2(3112, -44)
-
 [node name="Fogata2" type="Sprite2D" parent="."]
 position = Vector2(-347, -88)
 scale = Vector2(0.483607, 0.673913)
@@ -12376,3 +12372,6 @@ position = Vector2(2414, 136)
 
 [node name="Jumper13" parent="." instance=ExtResource("11_vw4yw")]
 position = Vector2(2908, 98)
+
+[node name="Door" parent="." instance=ExtResource("42_mmvuc")]
+position = Vector2(3108, -43)

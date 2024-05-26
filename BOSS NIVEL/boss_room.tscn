@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwhbo0cu70qi5"]
+
+[ext_resource type="PackedScene" uid="uid://b2xkawevkvaqe" path="res://golem_boss.tscn" id="1_jc2bc"]
+[ext_resource type="Texture2D" uid="uid://gatp0vj2pri3" path="res://scenes/hannah-oates-brick-wall-wip.jpg" id="1_lduqs"]
+[ext_resource type="PackedScene" uid="uid://c08ck0fqgjsc2" path="res://Player.tscn" id="2_vkgpw"]
+
+[node name="BossRoom" type="Node2D"]
+
+[node name="Hannah-oates-brick-wall-wip" type="Sprite2D" parent="."]
+position = Vector2(44, 100)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip2" type="Sprite2D" parent="Hannah-oates-brick-wall-wip"]
+position = Vector2(631, 0)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip3" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2"]
+position = Vector2(-634, -478)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip2" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3"]
+position = Vector2(1272, 478)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip4" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3/Hannah-oates-brick-wall-wip2"]
+position = Vector2(-633, -469)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip5" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip4"]
+position = Vector2(-1270, 470)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip6" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip4/Hannah-oates-brick-wall-wip5"]
+position = Vector2(-5, -481)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip7" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip4/Hannah-oates-brick-wall-wip5/Hannah-oates-brick-wall-wip6"]
+position = Vector2(1908, 4)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip9" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip4/Hannah-oates-brick-wall-wip5/Hannah-oates-brick-wall-wip6/Hannah-oates-brick-wall-wip7"]
+position = Vector2(-1271, 957)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip8" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip4/Hannah-oates-brick-wall-wip5/Hannah-oates-brick-wall-wip6/Hannah-oates-brick-wall-wip7/Hannah-oates-brick-wall-wip9"]
+position = Vector2(-638, -6)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip10" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip4/Hannah-oates-brick-wall-wip5/Hannah-oates-brick-wall-wip6/Hannah-oates-brick-wall-wip7/Hannah-oates-brick-wall-wip9/Hannah-oates-brick-wall-wip8"]
+position = Vector2(1275, 6)
+texture = ExtResource("1_lduqs")
+
+[node name="Hannah-oates-brick-wall-wip11" type="Sprite2D" parent="Hannah-oates-brick-wall-wip/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip3/Hannah-oates-brick-wall-wip2/Hannah-oates-brick-wall-wip4/Hannah-oates-brick-wall-wip5/Hannah-oates-brick-wall-wip6/Hannah-oates-brick-wall-wip7/Hannah-oates-brick-wall-wip9/Hannah-oates-brick-wall-wip8/Hannah-oates-brick-wall-wip10"]
+position = Vector2(638, -10)
+texture = ExtResource("1_lduqs")
+
+[node name="GolemBoss" parent="." instance=ExtResource("1_jc2bc")]
+position = Vector2(355, 147)
+
+[node name="player" parent="." instance=ExtResource("2_vkgpw")]
+position = Vector2(716, 147)
