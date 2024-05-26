@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ivlhqw8achn" path="res://Textures/Floor/jungle tileset.png" id="5_x4647"]
 [ext_resource type="Texture2D" uid="uid://1cv67jvsja7i" path="res://Textures/Floor/TX Tileset Ground.png" id="6_a70bt"]
 [ext_resource type="PackedScene" uid="uid://cbgjtr70maqer" path="res://Scenes/Player.tscn" id="7_65ixj"]
-[ext_resource type="Texture2D" uid="uid://b8vbg7cgsfbgf" path="res://Textures/Floor/pixel-art-style-set-of-different-texture-vector-23823354.png" id="7_dxeqj"]
+[ext_resource type="Texture2D" uid="uid://bbfr7o1683ltt" path="res://Textures/Floor/pixel-art-style-set-of-different-texture-vector-23823354.png" id="7_dxeqj"]
 [ext_resource type="Texture2D" uid="uid://c2oir6v1fwj6k" path="res://Textures/Water/Map1/waterAnimation11.png" id="8_d873j"]
 [ext_resource type="PackedScene" uid="uid://jm7rjx85tmr4" path="res://Scenes/checkpoint.tscn" id="9_ir32d"]
 [ext_resource type="PackedScene" uid="uid://dw72qlinlkhjn" path="res://Scenes/Objects/water.tscn" id="10_ttfsj"]
@@ -12013,7 +12013,7 @@ scale = Vector2(2.177, 0.946154)
 texture = ExtResource("8_d873j")
 
 [node name="checkpoint" parent="." instance=ExtResource("9_ir32d")]
-position = Vector2(1597, -135)
+position = Vector2(-317, -103)
 
 [node name="Water7" parent="." instance=ExtResource("10_ttfsj")]
 visible = false
@@ -12118,7 +12118,7 @@ position = Vector2(2105, 11)
 position = Vector2(2173, -84)
 
 [node name="checkpoint3" parent="." instance=ExtResource("9_ir32d")]
-position = Vector2(-319, -97)
+position = Vector2(1609, -133)
 
 [node name="FallingSpikes" parent="." instance=ExtResource("19_ynu17")]
 position = Vector2(-76, -238)
