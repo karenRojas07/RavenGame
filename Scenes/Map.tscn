@@ -355,7 +355,7 @@ position = Vector2(6, 3)
 
 [node name="Map1" type="Sprite2D" parent="."]
 z_index = -50
-position = Vector2(30, -2.00003)
+position = Vector2(32, -2.00003)
 scale = Vector2(3.83529, 4.36111)
 texture = ExtResource("1_645b1")
 
